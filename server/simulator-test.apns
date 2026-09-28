@@ -1,0 +1,14 @@
+{
+  "Simulator Target Bundle": "com.example.pushalarm",
+  "aps": {
+    "alert": { "title": "New alarm", "body": "Server X went down" },
+    "sound": "default",
+    "mutable-content": 1,
+    "content-available": 1
+  },
+  "alarm": {
+    "id": "6F9619FF-8B86-D011-B42D-00C04FC964FF",
+    "date": "2026-09-28T14:30:00Z",
+    "note": "Server X went down"
+  }
+}

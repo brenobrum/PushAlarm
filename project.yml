@@ -1,0 +1,37 @@
+name: PushAlarm
+options:
+  bundleIdPrefix: com.example.pushalarm
+  deploymentTarget:
+    iOS: "26.0"
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    DEVELOPMENT_TEAM: ""          # set your Apple Team ID here
+    CODE_SIGN_STYLE: Automatic
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+targets:
+  PushAlarm:
+    type: application
+    platform: iOS
+    sources: [PushAlarm, Shared]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.pushalarm
+        CODE_SIGN_ENTITLEMENTS: PushAlarm/PushAlarm.entitlements
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_CFBundleDisplayName: PushAlarm
+        INFOPLIST_FILE: PushAlarm/Info.plist
+    dependencies:
+      - target: NotificationService
+  NotificationService:
+    type: app-extension
+    platform: iOS
+    sources: [NotificationService, Shared]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.pushalarm.NotificationService
+        CODE_SIGN_ENTITLEMENTS: NotificationService/NotificationService.entitlements
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_FILE: NotificationService/Info.plist
