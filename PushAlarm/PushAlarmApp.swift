@@ -23,28 +23,46 @@ final class AppModel: ObservableObject {
     @Published var deviceToken: String?
     @Published var registrationError: String?
     @Published var alarmAuth: AlarmManager.AuthorizationState = AlarmManager.shared.authorizationState
-    @Published var notificationsAllowed = false
-    @Published var history: [AlarmScheduler.HistoryEntry] = AlarmScheduler.history
+    @Published var notificationStatus: UNAuthorizationStatus = .notDetermined
 
-    func requestPermissions() async {
-        _ = try? await AlarmManager.shared.requestAuthorization()
-        _ = try? await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge])
-        UIApplication.shared.registerForRemoteNotifications()
+    /// Ready to turn pushes into alarms.
+    var isConfigured: Bool {
+        alarmAuth == .authorized && notificationStatus == .authorized && deviceToken != nil
+    }
+
+    /// Asks for whatever is missing; if the user already said no, sends them to Settings.
+    func configure() async {
+        if alarmAuth == .denied || notificationStatus == .denied {
+            if let url = URL(string: UIApplication.openSettingsURLString) {
+                await UIApplication.shared.open(url)
+            }
+            return
+        }
+        await askForMissingPermissions()
+    }
+
+    /// Shows the system prompts for anything never asked before. Safe to call on every launch.
+    func askForMissingPermissions() async {
+        await refresh()
+        if alarmAuth == .notDetermined {
+            _ = try? await AlarmManager.shared.requestAuthorization()
+        }
+        if notificationStatus == .notDetermined {
+            _ = try? await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge])
+            UIApplication.shared.registerForRemoteNotifications()
+        }
         await refresh()
     }
 
     func refresh() async {
         await AlarmScheduler.flushPending()
         alarmAuth = AlarmManager.shared.authorizationState
-        let settings = await UNUserNotificationCenter.current().notificationSettings()
-        notificationsAllowed = settings.authorizationStatus == .authorized
-        history = AlarmScheduler.history
+        notificationStatus = await UNUserNotificationCenter.current().notificationSettings().authorizationStatus
     }
 
     func testAlarm() async {
         let request = AlarmRequest(date: .now.addingTimeInterval(10), note: "Test alarm from PushAlarm")
         _ = try? await AlarmScheduler.schedule(request)
-        await refresh()
     }
 }
 

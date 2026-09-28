@@ -12,6 +12,7 @@
 		67437C494F4299D762EE5E67 /* AlarmScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876ED87E65DDC57F5B7FC5DB /* AlarmScheduler.swift */; };
 		779D03E7161440156566C6E9 /* NotificationService.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 07D18D681AC47C4240C9CF90 /* NotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		99176705D6588CDFBDB47EDE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63161C872FFE8BC3D6903374 /* ContentView.swift */; };
+		A66E8BAECEF283EA9875E444 /* Dither.metal in Sources */ = {isa = PBXBuildFile; fileRef = 407E8E94FD0FCE6E121E9883 /* Dither.metal */; };
 		C436EC1C43A735A56A980084 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F912E3EDFDB0F6E1A36278 /* NotificationService.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		07D18D681AC47C4240C9CF90 /* NotificationService.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = NotificationService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		22333213546BA33EE061D4AC /* PushAlarm.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = PushAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		333847FBFC9288D50ABBECE5 /* PushAlarm.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PushAlarm.entitlements; sourceTree = "<group>"; };
+		407E8E94FD0FCE6E121E9883 /* Dither.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Dither.metal; sourceTree = "<group>"; };
 		63161C872FFE8BC3D6903374 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		876ED87E65DDC57F5B7FC5DB /* AlarmScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmScheduler.swift; sourceTree = "<group>"; };
 		87F405CC46A58B5F68110CB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				63161C872FFE8BC3D6903374 /* ContentView.swift */,
+				407E8E94FD0FCE6E121E9883 /* Dither.metal */,
 				87F405CC46A58B5F68110CB5 /* Info.plist */,
 				333847FBFC9288D50ABBECE5 /* PushAlarm.entitlements */,
 				01121D111D157EF6139E9727 /* PushAlarmApp.swift */,
@@ -150,11 +153,11 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					F3FC79D142FBC9C1D5553F8A = {
-						DevelopmentTeam = "";
+						DevelopmentTeam = B7524C64B4;
 						ProvisioningStyle = Automatic;
 					};
 					FC10A0E48A5A9A43E5137A29 = {
-						DevelopmentTeam = "";
+						DevelopmentTeam = B7524C64B4;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -186,6 +189,7 @@
 			files = (
 				67437C494F4299D762EE5E67 /* AlarmScheduler.swift in Sources */,
 				99176705D6588CDFBDB47EDE /* ContentView.swift in Sources */,
+				A66E8BAECEF283EA9875E444 /* Dither.metal in Sources */,
 				65FD66C94A2BFF3CFC4B07EF /* PushAlarmApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,7 +251,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = B7524C64B4;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -291,7 +295,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.pushalarm;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brenobrum.pushalarm;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -334,7 +338,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = B7524C64B4;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -371,7 +375,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.pushalarm;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brenobrum.pushalarm;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -388,7 +392,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.pushalarm.NotificationService;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brenobrum.pushalarm.NotificationService;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -405,7 +409,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.pushalarm.NotificationService;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brenobrum.pushalarm.NotificationService;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

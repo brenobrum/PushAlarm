@@ -84,7 +84,7 @@ test("ApnsClient signs and sends the request APNs expects", async () => {
   });
   const host = await listen(fakeApple);
 
-  const apns = new ApnsClient({ keyPem: privateKey.export({ type: "pkcs8", format: "pem" }), keyId: "KEY123", teamId: "TEAM123", topic: "com.example.pushalarm", host });
+  const apns = new ApnsClient({ keyPem: privateKey.export({ type: "pkcs8", format: "pem" }), keyId: "KEY123", teamId: "TEAM123", topic: "com.brenobrum.pushalarm", host });
   const payload = ApnsClient.buildPayload({ date: new Date("2030-01-01T00:00:00Z"), note: "hello" });
 
   assert.deepEqual(await apns.send(TOKEN, payload), { deviceToken: TOKEN, ok: true, status: 200, reason: undefined });
@@ -92,7 +92,7 @@ test("ApnsClient signs and sends the request APNs expects", async () => {
 
   const { headers, body } = requests[0];
   assert.equal(headers[":path"], `/3/device/${TOKEN}`);
-  assert.equal(headers["apns-topic"], "com.example.pushalarm");
+  assert.equal(headers["apns-topic"], "com.brenobrum.pushalarm");
   assert.equal(headers["apns-push-type"], "alert");
   assert.deepEqual(body, payload);
 

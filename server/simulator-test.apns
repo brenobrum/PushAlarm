@@ -1,5 +1,5 @@
 {
-  "Simulator Target Bundle": "com.example.pushalarm",
+  "Simulator Target Bundle": "com.brenobrum.pushalarm",
   "aps": {
     "alert": { "title": "New alarm", "body": "Server X went down" },
     "sound": "default",

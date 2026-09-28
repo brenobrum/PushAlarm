@@ -40,7 +40,7 @@ struct PushAlarmMetadata: AlarmMetadata {
 }
 
 enum AlarmScheduler {
-    static let appGroup = "group.com.example.pushalarm"
+    static let appGroup = "group.com.brenobrum.pushalarm"
     private static let processedKey = "processedAlarmIDs"
     private static let pendingKey = "pendingAlarmRequests"
     private static let historyKey = "alarmHistory"

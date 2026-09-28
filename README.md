@@ -30,17 +30,17 @@ Push payload:
 
 1. `brew install xcodegen && xcodegen generate`, then open `PushAlarm.xcodeproj`.
 2. Set your Team ID in `project.yml` (`DEVELOPMENT_TEAM`), or in Signing & Capabilities for both targets.
-3. Change `com.example.pushalarm` and `group.com.example.pushalarm` to your own IDs:
-   `project.yml`, both `.entitlements` files, `Shared/AlarmScheduler.swift`, `server/simulator-test.apns`.
-4. Run the app on an iPhone with iOS 26+. Tap **Allow alarms & notifications**, then copy the device token.
+3. The bundle ID is `com.brenobrum.pushalarm`, with the App Group `group.com.brenobrum.pushalarm`. Xcode's automatic signing
+   registers both the first time you run the app on a device.
+4. Run the app on an iPhone with iOS 26+. Tap the red bell and allow alarms and notifications; it turns blue when ready. Long-press the bell → **Copy device token**.
 5. In the Apple Developer portal, create an APNs key (.p8). Then send a push:
 
 ```bash
-APNS_KEY_PATH=AuthKey_XXXX.p8 APNS_KEY_ID=XXXX APNS_TEAM_ID=YYYY APNS_TOPIC=com.example.pushalarm \
+APNS_KEY_PATH=AuthKey_XXXX.p8 APNS_KEY_ID=XXXX APNS_TEAM_ID=YYYY APNS_TOPIC=com.brenobrum.pushalarm \
 node server/send-alarm.mjs <deviceToken> 2026-09-28T14:30:00Z "Server X went down"
 ```
 
-Simulator (no server needed): `xcrun simctl push booted com.example.pushalarm server/simulator-test.apns`
+Simulator (no server needed): `xcrun simctl push booted com.brenobrum.pushalarm server/simulator-test.apns`
 
 ## Limitations
 

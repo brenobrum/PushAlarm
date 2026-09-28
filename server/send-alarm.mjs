@@ -1,7 +1,7 @@
 // Sends a push that makes PushAlarm create an alarm. No dependencies — Node 18+.
 //
 //   APNS_KEY_PATH=AuthKey_ABC123.p8 APNS_KEY_ID=ABC123 APNS_TEAM_ID=TEAM123456 \
-//   APNS_TOPIC=com.example.pushalarm \
+//   APNS_TOPIC=com.brenobrum.pushalarm \
 //   node send-alarm.mjs <deviceToken> "2026-09-28T14:30:00Z" "Server X went down"
 //
 // Add APNS_PRODUCTION=1 for TestFlight / App Store builds.
