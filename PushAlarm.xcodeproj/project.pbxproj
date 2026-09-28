@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3049EEEE06CF30162571AD4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB775E598CE43E817B9C1FF7 /* Assets.xcassets */; };
 		34FA767ECFBD7763444CBDCB /* AlarmScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876ED87E65DDC57F5B7FC5DB /* AlarmScheduler.swift */; };
 		65FD66C94A2BFF3CFC4B07EF /* PushAlarmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01121D111D157EF6139E9727 /* PushAlarmApp.swift */; };
 		67437C494F4299D762EE5E67 /* AlarmScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876ED87E65DDC57F5B7FC5DB /* AlarmScheduler.swift */; };
@@ -51,6 +52,7 @@
 		87F405CC46A58B5F68110CB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8B912B5F8561F6F98354E5B1 /* NotificationService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotificationService.entitlements; sourceTree = "<group>"; };
 		D45B7B4BD999E4E28A7DC75A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DB775E598CE43E817B9C1FF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E6F912E3EDFDB0F6E1A36278 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +97,7 @@
 		F30CE48749C0127D60111E0F /* PushAlarm */ = {
 			isa = PBXGroup;
 			children = (
+				DB775E598CE43E817B9C1FF7 /* Assets.xcassets */,
 				63161C872FFE8BC3D6903374 /* ContentView.swift */,
 				407E8E94FD0FCE6E121E9883 /* Dither.metal */,
 				87F405CC46A58B5F68110CB5 /* Info.plist */,
@@ -112,6 +115,7 @@
 			buildConfigurationList = EF51043E29F7295F9AEFE68F /* Build configuration list for PBXNativeTarget "PushAlarm" */;
 			buildPhases = (
 				4DDE12FE26F59D06B28F6178 /* Sources */,
+				2520C3A262959DBABA5BD156 /* Resources */,
 				A9A3794496B7484A06F73EEA /* Embed Foundation Extensions */,
 			);
 			buildRules = (
@@ -181,6 +185,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2520C3A262959DBABA5BD156 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3049EEEE06CF30162571AD4E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4DDE12FE26F59D06B28F6178 /* Sources */ = {

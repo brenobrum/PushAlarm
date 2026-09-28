@@ -2,8 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>NSAlarmKitUsageDescription</key>
 	<string>PushAlarm creates alarms for the events you get notified about.</string>
+	<key>PushAlarmAPIURL</key>
+	<string>https://pushalarm.54.207.84.102.sslip.io</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

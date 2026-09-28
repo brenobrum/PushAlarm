@@ -23,7 +23,7 @@ Push payload:
 }
 ```
 
-* `date`: ISO‑8601. If it's missing or already in the past, the alarm rings about 5 seconds later.
+* `date`: ISO‑8601. If it's missing or already in the past, the alarm rings about 2 seconds later.
 * `id`: optional. Resending the same id doesn't create a second alarm.
 
 ## Setup

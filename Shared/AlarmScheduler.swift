@@ -7,7 +7,7 @@ import SwiftUI
 ///   "alarm": { "id": "<uuid>", "date": "2026-09-28T14:30:00Z", "note": "Server X went down" }
 ///
 /// `id` is optional (used to avoid creating the same alarm twice),
-/// `date` is optional (missing or in the past → alarm rings ~5 seconds from now).
+/// `date` is optional (missing or in the past → alarm rings ~2 seconds from now).
 struct AlarmRequest: Codable, Hashable {
     var id: UUID
     var date: Date
@@ -61,7 +61,7 @@ enum AlarmScheduler {
         }
 
         // AlarmKit needs a future date; ring shortly if the event time already passed.
-        let fireDate = max(request.date, .now.addingTimeInterval(5))
+        let fireDate = max(request.date, .now.addingTimeInterval(2))
 
         let alert: AlarmPresentation.Alert
         if #available(iOS 26.1, *) {

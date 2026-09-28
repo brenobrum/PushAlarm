@@ -82,6 +82,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
         let token = deviceToken.map { String(format: "%02x", $0) }.joined()
         print("APNs device token: \(token)")
         Task { @MainActor in model.deviceToken = token }
+        Task { await DeviceRegistration.register(token: token) }
     }
 
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
@@ -120,5 +121,29 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
             _ = try? await AlarmScheduler.schedule(request)
         }
         await model.refresh()
+    }
+}
+
+/// Tells the PushAlarm API about this phone so it receives every alarm.
+/// Runs on every launch: APNs tokens can change, and registering twice is harmless.
+enum DeviceRegistration {
+    static func register(token: String) async {
+        guard let base = Bundle.main.object(forInfoDictionaryKey: "PushAlarmAPIURL") as? String,
+              let url = URL(string: base)?.appending(path: "devices") else { return }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try? JSONEncoder().encode(["token": token])
+
+        for attempt in 0..<3 {
+            if let (_, response) = try? await URLSession.shared.data(for: request),
+               (response as? HTTPURLResponse)?.statusCode == 204 {
+                print("Registered with PushAlarm API")
+                return
+            }
+            try? await Task.sleep(for: .seconds(2 << attempt))
+        }
+        print("Couldn't register with PushAlarm API; will retry next launch")
     }
 }
